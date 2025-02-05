@@ -1,8 +1,9 @@
-import { RequestHandler } from 'express';
+// filepath: /Users/gururamu/Documents/personal/interview/jira/api/src/middleware/response.ts
+import { Response, Request, NextFunction } from 'express';
 
-export const addRespondToResponse: RequestHandler = (_req, res, next) => {
-  res.respond = (data): void => {
-    res.status(200).send(data);
+export const addRespondToResponse = (_req: Request, res: Response, next: NextFunction): void => {
+  (res as any).respond = (body: any) => {
+    res.json(body);
   };
   next();
 };
